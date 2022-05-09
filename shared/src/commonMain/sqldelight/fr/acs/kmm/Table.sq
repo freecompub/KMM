@@ -1,0 +1,36 @@
+CREATE TABLE Log (
+id TEXT NOT NULL UNIQUE PRIMARY KEY AUTOINCREMENT,
+message TEXT NOT NULL,
+timestamp TEXT NOT NULL,
+severity TEXT NOT NULL,
+correlationId TEXT NOT NULL,
+featureId TEXT NOT NULL,
+featureName TEXT NOT NULL,
+machineName TEXT NOT NULL,
+threadName TEXT,
+requestId TEXT,
+applicativeCode TEXT,
+errorCode TEXT,
+stacktrace TEXT,
+file TEXT,
+function TEXT,
+line TEXT
+);
+
+selectAll:
+SELECT * FROM Log;
+
+selectById:
+SELECT * FROM Log WHERE id = ?;
+
+
+insertLog:
+INSERT OR IGNORE INTO Log(message,timestamp,severity,correlationId,featureId,featureName,machineName,threadName,requestId,applicativeCode,errorCode,stacktrace,file,function,line)
+VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);
+
+deleteAll:
+DELETE FROM Log;
+
+deleteLog:
+DELETE FROM Log WHERE id = ?;
+

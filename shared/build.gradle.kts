@@ -2,6 +2,9 @@ plugins {
     kotlin("multiplatform")
     kotlin("native.cocoapods")
     id("com.android.library")
+    id("com.squareup.sqldelight")
+    id("kotlinx-serialization")
+
 }
 
 version = "1.0"
@@ -28,19 +31,31 @@ kotlin {
                 implementation("io.ktor:ktor-client-core:2.0.1")
                 implementation("io.ktor:ktor-serialization-kotlinx-json:2.0.1")
                 implementation("io.ktor:ktor-client-content-negotiation:2.0.1")
+
+                //BDD
+                implementation("com.squareup.sqldelight:coroutines-extensions:1.5.3")
+
+                // time
+                implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.3.2")
+
+
             }
         }
         val commonTest by getting {
             dependencies {
                 implementation(kotlin("test"))
-                implementation ("io.cucumber:cucumber-java8:6.10.2")
+                implementation ("io.ktor:ktor-client-mock:2.0.1")
+                implementation("com.squareup.sqldelight:runtime:1.5.3")
+
+/*                implementation ("io.cucumber:cucumber-java8:6.10.2")
                 implementation ("io.cucumber:cucumber-junit:6.10.2")
-                implementation ("io.cucumber:cucumber-android:4.8.4")
+                implementation ("io.cucumber:cucumber-android:4.8.4")*/
             }
         }
         val androidMain by getting{
             dependencies {
                 implementation("io.ktor:ktor-client-okhttp:2.0.0-beta-1")
+                implementation("com.squareup.sqldelight:android-driver:1.5.3")
             }
         }
         val androidTest by getting
@@ -48,10 +63,11 @@ kotlin {
         val iosArm64Main by getting
         val iosSimulatorArm64Main by getting
         val iosMain by creating {
-            dependencies {
+ /*           dependencies {
                 implementation("io.ktor:ktor-client-ios:2.0.0-beta-1")
-            }
-           // dependsOn(commonMain)
+                implementation("com.squareup.sqldelight:native-driver:1.5.3")
+            }*/
+            dependsOn(commonMain)
             iosX64Main.dependsOn(this)
             iosArm64Main.dependsOn(this)
             iosSimulatorArm64Main.dependsOn(this)
@@ -74,5 +90,12 @@ android {
     defaultConfig {
         minSdk = 21
         targetSdk = 32
+    }
+}
+
+
+sqldelight {
+    database("AFSlogsTable") {
+        packageName = "fr.acs.kmm.db"
     }
 }

@@ -72,6 +72,94 @@ class LoggerConfiguration(var featureId: String? = null,
      private var reachability: Reachability? = null
      private var scheduler: Scheduler? = null
 
+
+      fun info(message: String,
+     featureId: String? = null,
+     featureName: String? = null,
+     correlationId: String? = null,
+     file: String? = null,
+     function: String? = null,
+     line: UInt? = null
+     ) {
+         /*log(level: .info,
+         message(),
+         errorCode: nil,
+         featureId: featureId,
+         featureName: featureName,
+         correlationId: correlationId,
+         file: file,
+         function: function,
+         line: line)*/
+     }
+
+     fun debug(message: String,
+              featureId: String? = null,
+              featureName: String? = null,
+              correlationId: String? = null,
+              file: String? = null,
+              function: String? = null,
+              line: UInt? = null
+     ) {
+         /*log(level: .info,
+         message(),
+         errorCode: nil,
+         featureId: featureId,
+         featureName: featureName,
+         correlationId: correlationId,
+         file: file,
+         function: function,
+         line: line)*/
+     }
+
+
+     fun warning(message: String,
+               featureId: String? = null,
+               featureName: String? = null,
+               correlationId: String? = null,
+               file: String? = null,
+               function: String? = null,
+               line: UInt? = null
+     ) {
+         /*log(level: .info,
+         message(),
+         errorCode: nil,
+         featureId: featureId,
+         featureName: featureName,
+         correlationId: correlationId,
+         file: file,
+         function: function,
+         line: line)*/
+     }
+
+
+     fun error(message: String,
+                 featureId: String? = null,
+                 featureName: String? = null,
+                 correlationId: String? = null,
+                 file: String? = null,
+                 function: String? = null,
+                 line: UInt? = null
+     ) {
+         /*log(level: .info,
+         message(),
+         errorCode: nil,
+         featureId: featureId,
+         featureName: featureName,
+         correlationId: correlationId,
+         file: file,
+         function: function,
+         line: line)*/
+     }
+
+
+     fun reset() {
+         //TODO Samir
+     }
+
+     fun export() {
+         //TODO Samir
+     }
+
  }
 
 public enum class Level(val value:Int){

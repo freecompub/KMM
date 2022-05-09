@@ -5,8 +5,8 @@ expect class Platform() {
 }
 
 expect interface Repository {
-    fun log(log: Log)
-    fun export(): List<Log>
+    fun log(log: LogData)
+    fun export(): List<LogData>
     fun set(url: String)
     fun reset()
     fun clean(days: Int)
