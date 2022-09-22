@@ -3,6 +3,7 @@ package fr.acs.kmm
 import fr.acs.kmm.OSIAWebService.Reachability
 import fr.acs.kmm.OSIAWebService.Scheduler
 import fr.acs.kmm.OSIAWebService.WebService
+import kotlinx.datetime.Clock
 
 class LoggerConfiguration(var featureId: String? = null,
                           var featureName: String? = null,
@@ -120,6 +121,12 @@ class LoggerConfiguration(var featureId: String? = null,
                function: String? = null,
                line: UInt? = null
      ) {
+         val logData = LogData(message = message,
+             timestamp = Clock.System.now().toString(),
+             severity = Level.Warning,
+             correlationId = correlationId ?: Constants.defaultCorrelationId,
+             featureId = featureId ?: Constants.defaultFeatureId,
+             featureName = featureName ?: Constants.defaultFeatureName, machineName = Logger.machineName)
          /*log(level: .info,
          message(),
          errorCode: nil,

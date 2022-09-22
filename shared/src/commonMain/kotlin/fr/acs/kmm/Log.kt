@@ -4,8 +4,8 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class LogData(
-    val message: Message,
-    val timestamp: Long,
+    val message: String,
+    val timestamp: String,
     val severity: Level,
     val correlationId: String = Constants.defaultCorrelationId,
     val featureId: String = Constants.defaultFeatureId,
